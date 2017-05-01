@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: GfcczdT7B2YZUkHOBNLmsA+wVRfJG/lxKpgSa4CGCfARYzYosqYF3KbRbhJa5RldyqBxcbgGleuv/9ft66vg5ybZXdcXMCkDsqLeJckh+0OCf7Rd7wP3TN7hPedYLDwKn8fZQ9b1vG0DmMDc412DRliicGJnPgqxGcwP1SN1BI+us6EM4adoasqVIjxA5M0gpTe9V/C++R++binFaa/dFtYx+g9SNmap5AJB1t3IpkovKgrTYDI7rRvAhk2KuR1P4ZRJPBkImBr80EUU05gEyZ3KC3ayAYKPIRconhSs+QDT5azwWNecNoRsu2eRqZBr5fJmU+FxF45Vo1JHQ1wPywaM2XH7Uegyj2pPYESotqghobT9Q98uc/GUr2toHr6C/z/VIt+GS0JcThDJQ0B2GJ3Lh65Qk+I+lX/8fb9GUExXpO8wz+cVcgttzwVKA/k0JGSLE+it0JW9rEtFhBm5DsSVYyN/I1VHhJpdFLHmzELGhj0sWYS6Mnu0Wqjh5cY9Arw4vhdVa7gJyzaGGY4o07NfLTDS96z8dFKS5kwL78XipSD0/KI4xjWC4l7z2BGKg9V1zwLJHj2lrTCK1snOYGsm+HytYlApIeUPvKyHJOVr7MS/tNLLClAPmg4UM90Wg4T0t1zjKFeNvfABa2IYpMyqzIYXfvcnWuInsAdiWio=
+  app: secret-beyond-59550
+  on:
+    repo: CryptoCoinUser/node-blog-api
