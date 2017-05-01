@@ -1,10 +1,11 @@
 {
-  "name": "node-shopping-list-v5",
+  "name": "node-blog-api",
   "version": "0.0.1",
-  "description": "Shopping list app to demo 'the modern classic'",
+  "description": "Blog API to demo 'the modern classic' and server-side testing",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha ./test"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -14,12 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Thinkful-Ed/node-shopping-list-v5"
+    "url": "https://github.com/CryptoCoinUser/node-blog-api"
   },
   "keywords": [
     "node",
     "hyperdev",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.3.0"
+  }
 }
