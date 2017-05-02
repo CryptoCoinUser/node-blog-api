@@ -78,7 +78,8 @@ const ShoppingList = {
     const item = {
       name: name,
       id: uuid.v4(),
-      budget: budget
+      budget: budget,
+      checked: false
     };
     this.items[item.id] = item;
     return item;
@@ -92,7 +93,7 @@ const ShoppingList = {
     delete this.items[id];
   },
   update: function(updatedItem) {
-    console.log(`Deleting shopping list item \`${updatedItem.id}\``);
+    console.log(`Updating shopping list item \`${updatedItem.id}\``);
     const {id} = updatedItem;
     if (!(id in this.items)) {
       throw StorageException(

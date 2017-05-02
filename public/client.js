@@ -53,14 +53,16 @@ function getAndDisplayRecipes() {
 function getAndDisplayShoppingList() {
   console.log('Retrieving shopping list');
   $.getJSON(SHOPPING_LIST_URL, function(items) {
-    console.log('Rendering shopping list');
+    console.log('Rendering shopping list', items);
     var itemElements = items.map(function(item) {
       var element = $(shoppingItemTemplate);
       element.attr('id', item.id);
       var itemName = element.find('.js-shopping-item-name');
       itemName.text(item.name);
       element.attr('data-checked', item.checked);
+      console.log('getAndDisplayShoppingList typeof item.checked ' + typeof item.checked);
       if (item.checked) {
+        console.log('line 65');
         itemName.addClass('shopping-item__checked');
       }
       return element
@@ -188,11 +190,19 @@ function handleShoppingCheckedToggle() {
   $('.js-shopping-list').on('click', '.js-shopping-item-toggle', function(e) {
     e.preventDefault();
     var element = $(e.currentTarget).closest('.js-shopping-item');
-
+    var checked = !JSON.parse(element.attr('data-checked'));
+    console.log('checked is ' + checked);
+    if(checked == 'false'){
+      checked = true;
+    }else{ 
+      checked = false;
+    }
+    console.log('checked is ' + checked);
     var item = {
       id: element.attr('id'),
-      checked: !JSON.parse(element.attr('data-checked')),
-      name: element.find('.js-shopping-item-name').text()
+      checked: checked,
+      name: element.find('.js-shopping-item-name').text(),
+      budget: 99
     }
     updateShoppingListitem(item);
   });
