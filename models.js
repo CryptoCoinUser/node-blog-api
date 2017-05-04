@@ -73,13 +73,13 @@ function createBlogPostsModel() {
 /******** SHOPPING *********/
 
 const ShoppingList = {
-  create: function(name, budget) {
+  create: function(name, checked, budget) {
     console.log('Creating new shopping list item');
     const item = {
       name: name,
       id: uuid.v4(),
       budget: budget,
-      checked: false
+      checked: checked
     };
     this.items[item.id] = item;
     return item;

@@ -2,6 +2,7 @@
 var shoppingItemTemplate = (
   '<li class="js-shopping-item">' +
     '<p><span class="shopping-item js-shopping-item-name"></span></p>' +
+    '<p>Budget: <span class="js-shopping-item-budget"></span></p>' +
     '<div class="shopping-item-controls">' +
       '<button class="js-shopping-item-toggle">' +
         '<span class="button-label">check</span>' +
@@ -59,6 +60,12 @@ function getAndDisplayShoppingList() {
       element.attr('id', item.id);
       var itemName = element.find('.js-shopping-item-name');
       itemName.text(item.name);
+
+
+      var itemBudget = element.find('.js-shopping-item-budget');
+      itemBudget.text(item.budget);
+
+
       element.attr('data-checked', item.checked);
       console.log('getAndDisplayShoppingList typeof item.checked ' + typeof item.checked);
       if (item.checked) {
@@ -162,10 +169,16 @@ function handleShoppingListAdd() {
 
   $('#js-shopping-list-form').submit(function(e) {
     e.preventDefault();
-    addShoppingItem({
-      name: $(e.currentTarget).find('#js-new-item').val(),
-      checked: false
-    });
+    var newName = $(e.currentTarget).find('#js-new-item').val();
+    var newBudget = $(e.currentTarget).find('#js-item-budget').val();
+
+    if(newName){
+      addShoppingItem({
+        name: newName,
+        checked: false,
+        budget: newBudget
+      });
+    }
   });
 
 }
@@ -191,18 +204,10 @@ function handleShoppingCheckedToggle() {
     e.preventDefault();
     var element = $(e.currentTarget).closest('.js-shopping-item');
     var checked = !JSON.parse(element.attr('data-checked'));
-    console.log('checked is ' + checked);
-    if(checked == 'false'){
-      checked = true;
-    }else{ 
-      checked = false;
-    }
-    console.log('checked is ' + checked);
     var item = {
       id: element.attr('id'),
       checked: checked,
-      name: element.find('.js-shopping-item-name').text(),
-      budget: 99
+      name: element.find('.js-shopping-item-name').text()
     }
     updateShoppingListitem(item);
   });
